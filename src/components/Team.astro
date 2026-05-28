@@ -1,0 +1,45 @@
+---
+// Team section — Executive Director + Consultant. Two cards, lean by design.
+const TEAM = [
+  {
+    name: 'Luke Monroe',
+    role: 'Executive Director',
+    title: 'Founder & Executive Director',
+    bio: "Founder of Strategic Solutions, Inc. Luke leads SSI's mission to bring business-minded strategy to West Sonoma County's housing crisis — overseeing the community grants program, affordable housing investment, and the Robin Hood Homes subsidiary.",
+    photo: '/assets/team/luke-monroe.jpg',
+    photoPosition: 'center 18%',
+  },
+  {
+    name: 'Jamie Brasseal',
+    role: 'Consultant',
+    title: 'Strategic Consultant',
+    bio: "Strategic consultant supporting SSI's grant-writing operations and partnership development with Sonoma County nonprofits, government agencies, and private funders.",
+    photo: '/assets/team/jamie-brasseal.png',
+    photoPosition: 'center 20%',
+  },
+];
+---
+<section class="section paper" id="team">
+  <div class="container">
+    <div class="opener">
+      <div class="eyebrow">The Team</div>
+      <h2>Who's behind <em>Strategic Solutions.</em></h2>
+      <p class="lead">A lean operation — by design. We keep overhead low so more of every dollar reaches West Sonoma County.</p>
+    </div>
+    <div class="team-grid">
+      {TEAM.map((m) => (
+        <article class="team-card">
+          <div class="team-portrait">
+            <img src={m.photo} alt={`${m.name}, ${m.title}`} width="360" height="440" loading="lazy" decoding="async" style={`object-position: ${m.photoPosition};`} />
+          </div>
+          <div class="team-meta">
+            <div class="team-eyebrow">{m.role}</div>
+            <h3 class="team-name">{m.name}</h3>
+            <div class="team-title">{m.title}</div>
+            <p class="team-bio">{m.bio}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

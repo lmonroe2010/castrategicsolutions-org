@@ -1,0 +1,9 @@
+# Netlify build config for the Strategic Solutions, Inc. marketing site.
+# Astro outputs static HTML to `dist/`. No serverless functions or redirects yet.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"

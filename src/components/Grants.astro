@@ -1,0 +1,134 @@
+---
+// "Our Grants" — Variant A (Ledger). Q2 active + Q1 historical, both ledgers
+// styled identically; the divider label provides the only "this is closed"
+// signal. README says: for Q3 onward, prepend a new array above Q2_GRANTS.
+const Q2_GRANTS = [
+  {
+    amount: '$7,500',
+    name: "Children's Museum of Sonoma County",
+    desc: "Funding 2027 summer camp scholarships, ensuring children from low-income families in West County have access to the Museum's Wonder Camp program — nature-based, hands-on learning for ages 6–12.",
+    tags: ['education', 'children', 'west-county'],
+  },
+  {
+    amount: '$15,000',
+    name: 'Sebastopol Regional Library',
+    desc: "Directed to the Library's homeless and unsheltered crisis programs. The Sebastopol Library is a recognized community hub for social services, connecting unsheltered residents with housing resources, mental health referrals, and essential support through its Social Services Days program.",
+    tags: ['housing', 'unsheltered', 'sebastopol'],
+  },
+  {
+    amount: '$5,000',
+    name: 'Redwood Empire Food Bank',
+    desc: "Supporting hunger relief across Sonoma County and Northern California. REFB is the region's largest food assistance organization, serving over 135,000 individuals annually through 300+ distributions and 130 community partnerships.",
+    tags: ['food-security'],
+  },
+  {
+    amount: '$5,000',
+    name: "St. Mary's College of CA — DIRT Program",
+    desc: "A student scholarship for the DIRT program (Dismantle, Immerse, Reflect, Transform) — a signature Jan Term course at St. Mary's that sends students into impoverished communities to do hands-on service work, while challenging them to think systemically about the root causes of poverty and inequality.",
+    tags: ['education', 'scholarship'],
+  },
+];
+
+const Q1_GRANTS = [
+  {
+    amount: '$15,000',
+    name: 'The Healthy Room Project',
+    desc: "Seed funding to open the inaugural Sonoma County branch, concentrating on Zone 4 (unincorporated West County). One-day bedroom makeovers — clean rooms, beds, desks, lighting — for children ages 5–16 living in unhealthy conditions.",
+    tags: ['housing', 'children', 'west-county'],
+  },
+  {
+    amount: '$15,000',
+    name: 'TLC Child & Family Services',
+    desc: "Earmarked for TLC's young adult transitional housing program, serving foster youth aging out of foster care and other at-risk youth ages 16–25. Housing, job training, and life-skills support around Santa Rosa Junior College.",
+    tags: ['housing', 'transitional', 'youth'],
+  },
+  {
+    amount: '$5,000',
+    name: "Children's Museum of Sonoma County",
+    desc: "Scholarships for children from rural West County to attend the Museum's full-time summer camp — allowing working parents to continue employment while children are in enriching, safe summer programs.",
+    tags: ['education', 'children', 'rural'],
+  },
+  {
+    amount: '$5,000',
+    name: 'Redwood Empire Food Bank',
+    desc: "Supporting food insecurity relief across Sonoma County. REFB is the region's largest hunger-relief organization, serving over 135,000 individuals annually across five counties.",
+    tags: ['food-security'],
+  },
+  {
+    amount: '$5,000',
+    name: 'Sonoma County Acts of Kindness',
+    desc: "All-volunteer 501(c)3 founded by a formerly unhoused Santa Rosa resident — one of the largest mutual aid networks in the Bay Area, providing meals, supplies, and advocacy for unsheltered Sonoma County residents seven days a week.",
+    tags: ['food-security', 'advocacy'],
+  },
+  {
+    amount: '$5,000',
+    name: 'shARK Education Foundation',
+    desc: "Discretionary fund for teachers at Harmony Elementary and Salmon Creek Middle School (Occidental, CA) — classroom supplies, field trips, and books to enrich the experience for rural West County students.",
+    tags: ['education', 'rural', 'west-county'],
+  },
+];
+
+const Q2_TOTALS = {
+  assigned: '$32,500',
+  remaining: '$42,500',
+  cycleSize: '$75,000',
+};
+---
+<section class="section paper" id="grants">
+  <div class="container">
+    <div class="opener">
+      <div class="eyebrow">Q2 2026 Grant Cycle</div>
+      <h2>Our Grants</h2>
+      <p class="lead">Q2 2026 grants have been assigned from our community-grant allocation. <strong style="color: var(--ink-700); font-weight: 600;">{Q2_TOTALS.remaining}</strong> remains available for distribution this cycle.</p>
+    </div>
+
+    <div class="grants-a">
+      <div class="head">
+        <div>Amount</div>
+        <div>Q2 2026 · Assigned to date</div>
+        <div>Focus area</div>
+      </div>
+      {Q2_GRANTS.map((g) => (
+        <div class="row">
+          <div class="amount">{g.amount}</div>
+          <div>
+            <h4>{g.name}</h4>
+            <p>{g.desc}</p>
+          </div>
+          <div class="tags">
+            {g.tags.map((t) => <span class="tag">{t}</span>)}
+          </div>
+        </div>
+      ))}
+      <div class="foot">
+        <div class="amount">{Q2_TOTALS.assigned}</div>
+        <div class="lbl">Q2 2026 Assigned</div>
+        <div class="meta">Cycle size {Q2_TOTALS.cycleSize} · {Q2_TOTALS.remaining} remaining</div>
+      </div>
+    </div>
+
+    <div class="grants-divider">
+      <span>Q1 2026 · Inaugural Cycle</span>
+    </div>
+
+    <div class="grants-a historical">
+      {Q1_GRANTS.map((g) => (
+        <div class="row">
+          <div class="amount">{g.amount}</div>
+          <div>
+            <h4>{g.name}</h4>
+            <p>{g.desc}</p>
+          </div>
+          <div class="tags">
+            {g.tags.map((t) => <span class="tag">{t}</span>)}
+          </div>
+        </div>
+      ))}
+      <div class="foot">
+        <div class="amount">$50,000</div>
+        <div class="lbl">Q1 2026 Awarded</div>
+        <div class="meta">Six organizations · Closed cycle</div>
+      </div>
+    </div>
+  </div>
+</section>

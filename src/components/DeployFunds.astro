@@ -1,0 +1,78 @@
+---
+// "How We Deploy Our Funds" — three program columns. Data lives at the top of
+// the script so it stays a one-line edit. The check SVG matches the inline
+// markup in DeployFunds.jsx (Lucide-style, 1.5 stroke).
+const programs = [
+  {
+    pct: '50',
+    title: 'Community Grants',
+    desc: "Half of all funds are granted directly to local nonprofits focused on affordability, housing, food security, and education across Sonoma County — with a priority on rural and unincorporated West County organizations.",
+    bullets: [
+      'Q2 2026 cycle open · $42,500 remaining for distribution',
+      'Q1 2026 inaugural grants awarded to six 501(c)3 organizations',
+      'Priority given to rural West County and underserved communities',
+    ],
+    cta: 'Apply for a grant',
+    ctaHref: '#grants',
+    ctaExternal: false,
+  },
+  {
+    pct: '25',
+    title: 'Affordable Housing Investment',
+    desc: 'A dedicated reserve for direct investment in affordable housing projects — including down payment equity for projects ranging from tiny home villages to multifamily condos, for sale or for rent.',
+    bullets: [
+      'Focus on unincorporated West County',
+      'Projects may be built & operated by SSI or built for other nonprofits',
+      'Active outreach to cities, counties, and state for land and funding',
+    ],
+    cta: 'Read about Robin Hood Homes',
+    ctaHref: 'https://robinhoodhomes.org',
+    ctaExternal: true,
+  },
+  {
+    pct: '25',
+    title: 'Grant Writing Position',
+    desc: 'A full-time grant writer matchmaking Sonoma County nonprofits with state, federal, and private funds — and doing the work to submit on their behalf. The goal: drive more dollars into our community.',
+    bullets: [
+      '~50% focused on grants for other Sonoma County nonprofits',
+      '~50% focused on affordable housing grants from cities, counties & state',
+      'Services provided free of charge to qualifying nonprofits',
+    ],
+    cta: 'Read the job description + apply',
+    ctaHref: '/assets/SSI_Grant_Writer_JD.pdf',
+    ctaExternal: true,
+  },
+];
+---
+<section class="section cream" id="programs">
+  <div class="container">
+    <div class="opener">
+      <div class="eyebrow">Transparent by Design</div>
+      <h2>How We Deploy Our Funds</h2>
+      <p class="lead">Every dollar we raise is split across three programs in a consistent ratio. The model is intentionally simple — and intentionally public.</p>
+    </div>
+    <div class="deploy-a">
+      {programs.map((p) => (
+        <article class="col">
+          <div class="pct">{p.pct}<span class="u">%</span></div>
+          <h3>{p.title}</h3>
+          <p class="desc">{p.desc}</p>
+          <ul>
+            {p.bullets.map((b) => (
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+          <a
+            class="foot"
+            href={p.ctaHref}
+            target={p.ctaExternal ? '_blank' : undefined}
+            rel={p.ctaExternal ? 'noopener' : undefined}
+          >{p.cta} →</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
