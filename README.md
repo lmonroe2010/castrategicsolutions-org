@@ -1,6 +1,10 @@
 # Strategic Solutions, Inc. — Marketing Site
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5d8aa793-af7a-4c23-8f27-1bd20cae1757/deploy-status)](https://app.netlify.com/projects/strategic-solutions-inc/deploys)
+
 Production source for **[castrategicsolutions.org](https://castrategicsolutions.org)** — a single-page Astro site for Strategic Solutions, Inc., a California 501(c)(3) nonprofit working on the West Sonoma County housing crisis through community grants, affordable housing investment, and a free grant-writing service for other Sonoma nonprofits.
+
+Pushes to `main` trigger an automatic Netlify build + deploy.
 
 ## Stack
 
