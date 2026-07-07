@@ -1,7 +1,7 @@
 ---
-// "Our Grants" — Variant A (Ledger). Q2 active + Q1 historical, both ledgers
-// styled identically; the divider label provides the only "this is closed"
-// signal. README says: for Q3 onward, prepend a new array above Q2_GRANTS.
+// "Our Grants" — Variant A (Ledger). Q3 2026 is open for applications; Q2 and
+// Q1 show below as closed/awarded ledgers. When Q3 grants are assigned, add a
+// Q3_GRANTS array above Q2_GRANTS and promote it to a live ledger block.
 const Q2_GRANTS = [
   {
     amount: '$30,000',
@@ -101,17 +101,17 @@ const Q2_TOTALS = {
 <section class="section paper" id="grants">
   <div class="container">
     <div class="opener">
-      <div class="eyebrow">Q2 2026 Grant Cycle</div>
+      <div class="eyebrow">Q3 2026 Grant Cycle · Now Open</div>
       <h2>Our Grants</h2>
-      <p class="lead">The full <strong style="color: var(--ink-700); font-weight: 600;">{Q2_TOTALS.cycleSize}</strong> Q2 2026 community-grant cycle has now been assigned across {Q2_GRANTS.length} organizations.</p>
+      <p class="lead">Applications for the <strong style="color: var(--ink-700); font-weight: 600;">Q3 2026</strong> community-grant cycle are now open. We fund Sonoma County nonprofits working on housing, affordability, food security, and education — with priority given to rural and unincorporated West County organizations.</p>
+      <a class="btn btn-primary" href="mailto:Luke@CaStrategicSolutions.org?subject=Q3%202026%20Grant%20Application">Apply for a Grant</a>
     </div>
 
-    <div class="grants-a">
-      <div class="head">
-        <div>Amount</div>
-        <div>Q2 2026 · Assigned to date</div>
-        <div>Focus area</div>
-      </div>
+    <div class="grants-divider">
+      <span>Q2 2026 · Closed Cycle</span>
+    </div>
+
+    <div class="grants-a historical">
       {Q2_GRANTS.map((g) => (
         <div class="row">
           <div class="amount">{g.amount}</div>
@@ -126,8 +126,8 @@ const Q2_TOTALS = {
       ))}
       <div class="foot">
         <div class="amount">{Q2_TOTALS.assigned}</div>
-        <div class="lbl">Q2 2026 Assigned</div>
-        <div class="meta">Cycle size {Q2_TOTALS.cycleSize} · fully allocated</div>
+        <div class="lbl">Q2 2026 Awarded</div>
+        <div class="meta">Eight organizations · Closed cycle</div>
       </div>
     </div>
 
