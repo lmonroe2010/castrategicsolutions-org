@@ -1,0 +1,141 @@
+/* Strategic Solutions, Inc. Design System — generated from tokens.json */
+:root, [data-theme="light"] {
+  --navy-50: #eef2f7;
+  --navy-100: #d6dfec;
+  --navy-200: #a8b8cf;
+  --navy-300: #7991b1;
+  --navy-400: #4d6a92;
+  --navy-500: #2a4e7c;
+  --navy-600: #1b3a6b;
+  --navy-700: #142b51;
+  --navy-800: #0e1f3b;
+  --navy-900: #081427;
+  --steel-50: #edf3f9;
+  --steel-100: #cfe0ee;
+  --steel-200: #9ec0dd;
+  --steel-300: #6ba0cb;
+  --steel-400: #4385b8;
+  --steel-500: #2a6fae;
+  --steel-600: #1f578c;
+  --steel-700: #174369;
+  --steel-800: #0f3149;
+  --steel-900: #082136;
+  --sage-100: #dde7d2;
+  --sage-500: #556d42;
+  --sage-600: #445a36;
+  --clay-400: #b07a55;
+  --clay-500: #8f6043;
+  --gold-50: #fbf4e1;
+  --gold-100: #f5e5b6;
+  --gold-200: #ebcf7d;
+  --gold-300: #dab148;
+  --gold-400: #c49628;
+  --gold-500: #a77c1a;
+  --cream-50: #fbf8f2;
+  --cream-100: #f4efe6;
+  --cream-200: #eae2d2;
+  --cream-300: #d8cdb7;
+  --stone-400: #a89e8c;
+  --stone-500: #7a7263;
+  --stone-600: #54503f;
+  --ink-700: #2c2a24;
+  --ink-800: #1a1916;
+  --ink-900: #0e0d0b;
+  --paper: #ffffff;
+  --shadow-ink: rgba(14, 31, 59, 0.12);
+  --color-bg: var(--cream-50);
+  --color-surface: var(--paper);
+  --color-surface-2: var(--cream-100);
+  --color-surface-3: var(--cream-200);
+  --color-surface-ink: var(--navy-600);
+  --color-surface-ink-2: var(--navy-800);
+  --color-fg-1: var(--ink-700);
+  --color-fg-2: var(--stone-600);
+  --color-fg-3: var(--stone-500);
+  --color-fg-on-ink: var(--cream-50);
+  --color-fg-on-ink-2: var(--cream-200);
+  --color-border: var(--cream-200);
+  --color-border-strong: var(--cream-300);
+  --color-divider: rgba(44, 42, 36, 0.10);
+  --color-primary: var(--navy-600);
+  --color-primary-hover: var(--navy-700);
+  --color-primary-fg: var(--cream-50);
+  --color-accent: var(--steel-500);
+  --color-accent-hover: var(--steel-600);
+  --color-accent-fg: var(--cream-50);
+  --color-link: var(--navy-600);
+  --color-link-hover: var(--steel-500);
+  --color-success: var(--sage-600);
+  --color-warning: var(--gold-400);
+  --color-danger: #9a3322;
+  --shadow-xs: 0 1px 2px rgba(14, 31, 59, 0.06);
+  --shadow-sm: 0 2px 6px -1px rgba(14, 31, 59, 0.08), 0 1px 2px rgba(14, 31, 59, 0.05);
+  --shadow-md: 0 8px 22px -8px rgba(14, 31, 59, 0.16), 0 2px 6px -2px rgba(14, 31, 59, 0.08);
+  --shadow-lg: 0 22px 50px -18px rgba(14, 31, 59, 0.24), 0 6px 14px -6px rgba(14, 31, 59, 0.10);
+  --shadow-inset: inset 0 0 0 1px rgba(14, 31, 59, 0.08);
+}
+:root {
+  --s-0: 0;
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 2.5rem;
+  --s-8: 3rem;
+  --s-9: 4rem;
+  --s-10: 5rem;
+  --s-11: 6rem;
+  --s-12: 8rem;
+  --r-0: 0;
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-xl: 16px;
+  --r-pill: 999px;
+  --fs-display-1: clamp(3.2rem, 5.2vw + 1rem, 5.5rem);
+  --fs-display-2: clamp(2.6rem, 3.6vw + 1rem, 4.0rem);
+  --fs-h1: clamp(2.2rem, 2.4vw + 1rem, 3.0rem);
+  --fs-h2: clamp(1.7rem, 1.4vw + 1rem, 2.2rem);
+  --fs-h3: clamp(1.35rem, 0.6vw + 1rem, 1.6rem);
+  --fs-h4: 1.15rem;
+  --fs-lead: 1.25rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9375rem;
+  --fs-meta: 0.8125rem;
+  --fs-data: clamp(2.4rem, 2.5vw + 1rem, 3.6rem);
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+  --lh-tight: 1.08;
+  --lh-snug: 1.22;
+  --lh-normal: 1.55;
+  --lh-loose: 1.7;
+  --tracking-eyebrow: 0.14em;
+  --tracking-tight: -0.018em;
+  --tracking-snug: -0.005em;
+  --tracking-normal: 0;
+  --container-narrow: 760px;
+  --container-base: 1100px;
+  --container-wide: 1280px;
+  --font-display: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+.display-1 { font-family: var(--font-display); font-size: 5.5rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.018em; }
+.display-2 { font-family: var(--font-display); font-size: 4rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.018em; }
+.h1 { font-family: var(--font-display); font-size: 3rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.018em; }
+.h2 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; line-height: 1.22; letter-spacing: -0.018em; }
+.h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.005em; }
+.h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; line-height: 1.08; letter-spacing: -0.005em; }
+.data-figure { font-family: var(--font-display); font-size: 3.6rem; font-weight: 400; line-height: 1; letter-spacing: -0.018em; }
+.lead { font-family: var(--font-body); font-size: 1.25rem; font-weight: 400; line-height: 1.7; }
+.body { font-family: var(--font-body); font-size: 1.0625rem; font-weight: 400; line-height: 1.55; }
+.small { font-family: var(--font-body); font-size: 0.9375rem; font-weight: 400; line-height: 1.55; }
+.eyebrow { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; line-height: 1.55; letter-spacing: 0.14em; }
+.code { font-family: var(--font-mono); font-size: 0.92em; font-weight: 400; line-height: 1.55; }

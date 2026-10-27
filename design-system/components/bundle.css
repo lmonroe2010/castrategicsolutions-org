@@ -1,0 +1,96 @@
+/* Strategic Solutions, Inc. — component styles for the design-system previews.
+   Values copied from the original preview cards; colors, radii, shadows and motion come from tokens.css. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300..900&family=Source+Sans+3:wght@300..900&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+body { margin: 0; background: var(--color-bg); color: var(--color-fg-1); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+.ssi-stage { padding: 22px 28px; background: var(--cream-50); }
+.ssi-note { font-family: var(--font-mono); font-size: 10.5px; color: var(--stone-500); font-weight: 500; letter-spacing: 0.04em; }
+
+/* Button */
+.ssi-btn { font-family: var(--font-body); font-size: 15px; font-weight: 600; padding: 11px 22px; border-radius: var(--r-md); border: 1.5px solid transparent; cursor: pointer; transition: all var(--dur-fast, 150ms) var(--ease-out, cubic-bezier(0.22, 0.61, 0.36, 1)); letter-spacing: 0.005em; line-height: 1; }
+.ssi-btn--primary { background: var(--navy-600); color: var(--cream-50); }
+.ssi-btn--primary:hover, .ssi-btn--primary.is-hover { background: var(--navy-700); }
+.ssi-btn--accent { background: var(--steel-500); color: var(--cream-50); }
+.ssi-btn--secondary { background: transparent; color: var(--navy-600); border-color: var(--navy-600); }
+.ssi-btn--ghost { background: transparent; color: var(--navy-600); padding-left: 6px; padding-right: 6px; border-color: transparent; text-decoration: underline; text-decoration-color: var(--navy-300); text-underline-offset: 3px; }
+.ssi-btn--sm { font-size: 13px; padding: 8px 14px; }
+.ssi-btn[disabled], .ssi-btn.is-disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Badge & tag */
+.ssi-badge { font-family: var(--font-body); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: var(--r-pill); letter-spacing: 0.02em; line-height: 1.6; display: inline-flex; align-items: center; gap: 6px; }
+.ssi-badge--primary { background: var(--navy-600); color: var(--cream-50); }
+.ssi-badge--soft { background: var(--navy-50); color: var(--navy-700); border: 1px solid var(--navy-100); }
+.ssi-badge--accent { background: var(--steel-50); color: var(--steel-700); border: 1px solid var(--steel-100); }
+.ssi-badge--success { background: var(--steel-50); color: var(--steel-600); border: 1px solid var(--steel-100); }
+.ssi-badge--gold { background: var(--gold-50); color: var(--gold-500); border: 1px solid var(--gold-100); }
+.ssi-badge--outline { background: transparent; color: var(--ink-700); border: 1px solid var(--cream-300); }
+.ssi-badge__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.9; }
+.ssi-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 3px; background: var(--cream-100); color: var(--stone-600); }
+
+/* Card */
+.ssi-card { background: var(--paper); border-radius: var(--r-lg); padding: 20px 22px; box-shadow: var(--shadow-sm), var(--shadow-inset); display: flex; flex-direction: column; gap: 8px; position: relative; }
+.ssi-card__rule { position: absolute; left: 22px; top: 0; height: 3px; width: 36px; background: var(--steel-500); }
+.ssi-card__pct { font-family: var(--font-display); font-size: 38px; font-weight: 400; color: var(--navy-600); line-height: 1; letter-spacing: -0.02em; }
+.ssi-card__title { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink-700); margin: 0; }
+.ssi-card__desc { font-family: var(--font-body); font-size: 13px; color: var(--stone-600); line-height: 1.45; }
+.ssi-card__amount { font-family: var(--font-display); font-size: 28px; font-weight: 400; color: var(--steel-500); letter-spacing: -0.02em; line-height: 1; }
+.ssi-card__recipient { font-family: var(--font-display); font-size: 16px; color: var(--ink-700); font-weight: 600; margin-top: 6px; }
+.ssi-card__blurb { font-family: var(--font-body); font-size: 12.5px; color: var(--stone-600); line-height: 1.5; }
+
+/* Data callout (inverted) */
+.ssi-callout { padding: 28px; background: var(--navy-800); }
+.ssi-callout__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: end; padding-top: 4px; border-top: 3px solid var(--steel-500); }
+.ssi-callout__stat { padding-top: 14px; }
+.ssi-callout__figure { font-family: var(--font-display); font-weight: 400; font-size: 54px; line-height: 0.95; color: var(--cream-50); letter-spacing: -0.022em; font-variant-numeric: lining-nums tabular-nums; }
+.ssi-callout__unit { color: var(--steel-400); }
+.ssi-callout__caption { font-family: var(--font-body); font-size: 12px; color: var(--navy-200); line-height: 1.45; margin-top: 10px; }
+
+/* Section opener: eyebrow → headline → lead */
+.ssi-opener { max-width: 580px; }
+.ssi-opener__eyebrow { font-family: var(--font-body); font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel-500); display: inline-flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.ssi-opener__eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--steel-500); display: inline-block; }
+.ssi-opener__headline { font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; color: var(--navy-600); letter-spacing: -0.018em; margin: 0 0 10px; }
+.ssi-opener__headline em { color: var(--steel-500); font-style: italic; }
+.ssi-opener__lead { font-family: var(--font-body); font-size: 15.5px; color: var(--stone-600); line-height: 1.55; margin: 0; }
+
+/* Form inputs */
+.ssi-field { display: flex; flex-direction: column; gap: 6px; }
+.ssi-field__label { font-family: var(--font-body); font-size: 12px; font-weight: 600; color: var(--ink-700); letter-spacing: 0.02em; }
+.ssi-input, .ssi-select { font-family: var(--font-body); font-size: 14px; color: var(--ink-700); background: var(--paper); border: 1px solid var(--cream-300); border-radius: var(--r-md); padding: 9px 12px; outline: none; transition: all var(--dur-fast, 150ms) var(--ease-out, cubic-bezier(0.22, 0.61, 0.36, 1)); }
+.ssi-input::placeholder { color: var(--stone-400); }
+.ssi-input:focus, .ssi-input.is-focus { border-color: var(--navy-500); box-shadow: 0 0 0 3px rgba(43, 78, 124, 0.18); }
+.ssi-input.is-error { border-color: var(--steel-500); }
+.ssi-field__helper { font-family: var(--font-body); font-size: 11.5px; color: var(--stone-500); }
+.ssi-field__helper.is-error { color: var(--steel-600); }
+.ssi-select { background-image: linear-gradient(45deg, transparent 50%, var(--navy-600) 50%), linear-gradient(135deg, var(--navy-600) 50%, transparent 50%); background-position: calc(100% - 17px) 50%, calc(100% - 12px) 50%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; appearance: none; padding-right: 32px; }
+
+/* Pull-quote */
+.ssi-quote { position: relative; padding: 4px 0 4px 28px; border-left: 3px solid var(--steel-500); max-width: 600px; }
+.ssi-quote blockquote { font-family: var(--font-display); font-size: 22px; line-height: 1.35; color: var(--navy-700); font-weight: 400; font-style: italic; margin: 0 0 14px; letter-spacing: -0.006em; text-wrap: balance; }
+.ssi-quote blockquote em { font-style: normal; color: var(--steel-500); }
+.ssi-quote__attr { font-family: var(--font-body); font-size: 12px; color: var(--stone-600); display: flex; align-items: center; gap: 10px; }
+.ssi-quote__who { font-weight: 700; color: var(--ink-700); letter-spacing: 0.01em; }
+.ssi-quote__what { letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+.ssi-quote__dot { width: 3px; height: 3px; background: var(--stone-400); border-radius: 50%; }
+
+/* Logo */
+.ssi-logo-frame { background: var(--paper); border-radius: var(--r-lg); box-shadow: var(--shadow-inset); padding: 18px; display: flex; align-items: center; justify-content: center; min-height: 140px; }
+.ssi-logo-frame > img { max-height: 110px; max-width: 100%; object-fit: contain; }
+.ssi-lockup { display: flex; align-items: center; gap: 16px; padding: 22px 24px; justify-content: flex-start; }
+.ssi-lockup > img { height: 64px; flex-shrink: 0; }
+.ssi-lockup__name { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--navy-600); line-height: 1.05; letter-spacing: -0.01em; }
+.ssi-lockup__tagline { font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--stone-600); letter-spacing: 0.03em; margin-top: 4px; }
+.ssi-logo-band { border-radius: var(--r-lg); padding: 20px 22px; display: flex; align-items: center; gap: 14px; min-height: 100px; }
+.ssi-logo-band > img { height: 56px; flex-shrink: 0; }
+.ssi-logo-band--navy { background: var(--navy-700); }
+.ssi-logo-band--navy > img { filter: brightness(0) invert(1); }
+.ssi-logo-band--cream { background: var(--cream-100); }
+.ssi-logo-band__name { font-family: var(--font-display); font-size: 17px; font-weight: 600; line-height: 1.1; letter-spacing: -0.008em; }
+.ssi-logo-band__tagline { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; margin-top: 4px; }
+.ssi-logo-band--navy .ssi-logo-band__name { color: var(--cream-50); }
+.ssi-logo-band--navy .ssi-logo-band__tagline { color: var(--navy-200); }
+.ssi-logo-band--cream .ssi-logo-band__name { color: var(--navy-700); }
+.ssi-logo-band--cream .ssi-logo-band__tagline { color: var(--stone-600); }
+
+/* Icons */
+.ssi-icon { width: 26px; height: 26px; stroke: var(--navy-600); stroke-width: 1.5; }

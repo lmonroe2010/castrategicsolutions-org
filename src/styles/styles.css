@@ -575,7 +575,19 @@ body {
 .grants-divider { display: flex; align-items: center; gap: 18px; margin: 56px 0 28px; }
 .grants-divider::before, .grants-divider::after { content: ''; flex: 1; height: 1px; background: var(--cream-300); }
 .grants-divider span { font-family: var(--font-body); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone-500); }
-.grants-a.historical .row:first-child { border-top: 0; }
+/* Community Grants: intro paragraphs, cycle banner, feature cards, "where" column */
+.grants-intro .lead { margin-bottom: 16px; }
+.grants-intro .lead:last-child { margin-bottom: 40px; }
+.grants-cycle-banner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: var(--cream-100); border-radius: var(--r-lg); padding: 20px 24px; margin: 0 0 40px; }
+.grants-cycle-banner .label { font-family: var(--font-body); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel-500); margin-bottom: 6px; }
+.grants-cycle-banner p { font-family: var(--font-body); font-size: 15px; color: var(--ink-700); margin: 0; }
+.grants-cycle-banner p.how { margin-top: 6px; color: var(--stone-600); }
+.grants-cycle-banner p.how a { color: var(--navy-600); font-weight: 600; }
+.grants-cycle-banner { scroll-margin-top: 96px; }
+.grants-features { display: flex; flex-direction: column; gap: 24px; }
+.grants-a .row .where { font-family: var(--font-body); font-size: 13.5px; color: var(--stone-600); }
+.figures-asof { font-family: var(--font-body); font-size: 12.5px; color: var(--stone-500); margin: 16px 0 0; }
+.data-strip .figures-asof { max-width: var(--container-wide); margin: 24px auto 0; font-size: 12px; color: var(--navy-200); }
 
 /* ---------- footer ---------------------------------------------------------- */
 .site-footer { background: var(--navy-800); color: var(--cream-200); padding: 72px 32px 32px; }
@@ -655,6 +667,9 @@ body {
   .grants-a .row p { max-width: none; font-size: 14.5px; }
   .grants-a .foot { gap: 4px; }
   .grants-a .foot .meta { text-align: left; }
+  .grants-cycle-banner .btn { width: 100%; justify-content: center; }
+  /* The stacked header is up to 171px tall on phones; land #apply just below it. */
+  .grants-cycle-banner { scroll-margin-top: 188px; }
 
   /* Grants card grid + receipt (UI-kit variants B/C) */
   .grants-b { grid-template-columns: 1fr; }
