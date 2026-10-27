@@ -2,6 +2,8 @@
 // "How We Deploy Our Funds" — three program columns. Data lives at the top of
 // the script so it stays a one-line edit. The check SVG matches the inline
 // markup in DeployFunds.jsx (Lucide-style, 1.5 stroke).
+import { TOTAL, usd } from '../data/figures.js';
+
 const programs = [
   {
     pct: '50',
@@ -9,7 +11,7 @@ const programs = [
     desc: "Half of all funds are granted directly to local nonprofits focused on affordability, housing, food security, and education across Sonoma County — with a priority on rural and unincorporated West County organizations.",
     bullets: [
       'Q3 2026 cycle now open · accepting applications',
-      '$125,000 awarded to date across the Q1 & Q2 2026 cycles',
+      `${usd(TOTAL.amount)} awarded through ${TOTAL.grants} grants benefiting ${TOTAL.organizations} organizations since early 2026`,
       'Priority given to rural West County and underserved communities',
     ],
     cta: 'Apply for a grant',

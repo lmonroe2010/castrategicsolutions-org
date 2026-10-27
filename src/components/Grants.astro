@@ -1,158 +1,129 @@
 ---
-// "Our Grants" — Variant A (Ledger). Q3 2026 is open for applications; Q2 and
-// Q1 show below as closed/awarded ledgers. When Q3 grants are assigned, add a
-// Q3_GRANTS array above Q2_GRANTS and promote it to a live ledger block.
-const Q2_GRANTS = [
-  {
-    amount: '$30,000',
-    name: 'TLC Child & Family Services',
-    desc: "Earmarked for a future joint-venture housing project with SSI — details to be announced. TLC serves foster and former-foster youth and young adults ages 16–24 across Sonoma County, pairing housing with mobile case management, life skills, and long-term support.",
-    tags: ['housing', 'joint-venture', 'youth'],
-  },
-  {
-    amount: '$7,500',
-    name: "Children's Museum of Sonoma County",
-    desc: "Funding 2027 summer camp scholarships, ensuring children from low-income families in West County have access to the Museum's Wonder Camp program — nature-based, hands-on learning for ages 6–12.",
-    tags: ['education', 'children', 'west-county'],
-  },
-  {
-    amount: '$7,500',
-    name: 'Community Support Network',
-    desc: "Supporting CSN's supportive-housing network for people experiencing homelessness alongside mental-health and behavioral-health challenges. Across nine Sonoma County homes — from the Opportunity House shelter to permanent supportive housing — CSN houses more than 200 residents each year, pairing stable shelter with the care that keeps them housed.",
-    tags: ['housing', 'behavioral-health', 'santa-rosa'],
-  },
-  {
-    amount: '$7,500',
-    name: 'The Living Room',
-    desc: "Directed to The Living Room, the only daytime drop-in center in Sonoma County serving women and children experiencing or at risk of homelessness. Since 1993, its Women's and Mother & Child programs have provided meals, transitional housing, and a path to stability for hundreds of women and children each year.",
-    tags: ['housing', 'women-children', 'santa-rosa'],
-  },
-  {
-    amount: '$7,500',
-    name: 'Sebastopol Inter-Church Food Pantry',
-    desc: "A collaborative ministry of Sebastopol churches based at St. Stephen's Episcopal, providing groceries and food staples to West County residents — Sebastopol, Graton, Occidental, Bodega, Freestone, and Forestville — several days a week.",
-    tags: ['food-security', 'west-county', 'sebastopol'],
-  },
-  {
-    amount: '$5,000',
-    name: 'Redwood Empire Food Bank',
-    desc: "Supporting hunger relief across Sonoma County and Northern California. REFB is the region's largest food assistance organization, serving over 135,000 individuals annually through 300+ distributions and 130 community partnerships.",
-    tags: ['food-security'],
-  },
-  {
-    amount: '$5,000',
-    name: 'Sonoma County Acts of Kindness',
-    desc: "All-volunteer 501(c)3 founded by a formerly unhoused Santa Rosa resident — one of the largest mutual aid networks in the Bay Area, providing meals, supplies, and advocacy for unsheltered Sonoma County residents seven days a week.",
-    tags: ['food-security', 'advocacy'],
-  },
-  {
-    amount: '$5,000',
-    name: "St. Mary's College of CA — DIRT Program",
-    desc: "A student scholarship for the DIRT program (Dismantle, Immerse, Reflect, Transform) — a signature Jan Term course at St. Mary's that sends students into impoverished communities to do hands-on service work, while challenging them to think systemically about the root causes of poverty and inequality.",
-    tags: ['education', 'scholarship'],
-  },
-];
+// Community Grants (Update Package v3, B6). Copy is used word for word; every
+// figure comes from src/data/figures.js, which checks the arithmetic at build.
+import { AS_OF, CYCLES, TOTALS_ORDER, TOTAL, usd } from '../data/figures.js';
 
-const Q1_GRANTS = [
-  {
-    amount: '$15,000',
-    name: 'The Healthy Room Project',
-    desc: "Seed funding to open the inaugural Sonoma County branch, concentrating on Zone 4 (unincorporated West County). One-day bedroom makeovers — clean rooms, beds, desks, lighting — for children ages 5–16 living in unhealthy conditions.",
-    tags: ['housing', 'children', 'west-county'],
-  },
-  {
-    amount: '$15,000',
-    name: 'TLC Child & Family Services',
-    desc: "Earmarked for TLC's young adult transitional housing program, serving foster youth aging out of foster care and other at-risk youth ages 16–25. Housing, job training, and life-skills support around Santa Rosa Junior College.",
-    tags: ['housing', 'transitional', 'youth'],
-  },
-  {
-    amount: '$5,000',
-    name: "Children's Museum of Sonoma County",
-    desc: "Scholarships for children from rural West County to attend the Museum's full-time summer camp — allowing working parents to continue employment while children are in enriching, safe summer programs.",
-    tags: ['education', 'children', 'rural'],
-  },
-  {
-    amount: '$5,000',
-    name: 'Redwood Empire Food Bank',
-    desc: "Supporting food insecurity relief across Sonoma County. REFB is the region's largest hunger-relief organization, serving over 135,000 individuals annually across five counties.",
-    tags: ['food-security'],
-  },
-  {
-    amount: '$5,000',
-    name: 'Sonoma County Acts of Kindness',
-    desc: "All-volunteer 501(c)3 founded by a formerly unhoused Santa Rosa resident — one of the largest mutual aid networks in the Bay Area, providing meals, supplies, and advocacy for unsheltered Sonoma County residents seven days a week.",
-    tags: ['food-security', 'advocacy'],
-  },
-  {
-    amount: '$5,000',
-    name: 'shARK Education Foundation',
-    desc: "Discretionary fund for teachers at Harmony Elementary and Salmon Creek Middle School (Occidental, CA) — classroom supplies, field trips, and books to enrich the experience for rural West County students.",
-    tags: ['education', 'rural', 'west-county'],
-  },
-];
-
-const Q2_TOTALS = {
-  assigned: '$75,000',
-  remaining: '$0',
-  cycleSize: '$75,000',
-};
+const byKey = Object.fromEntries(CYCLES.map((c) => [c.key, c]));
+const gravenstein = byKey['gravenstein'];
+const [fence, furnishings] = gravenstein.grants;
+const healthyRoomSeed = byKey['q1-2026'].grants.find((g) => g.org === 'healthy-room');
 ---
 <section class="section paper" id="grants">
   <div class="container">
-    <div class="opener">
-      <div class="eyebrow">Q3 2026 Grant Cycle · Now Open</div>
-      <h2>Our Grants</h2>
-      <p class="lead">Applications for the <strong style="color: var(--ink-700); font-weight: 600;">Q3 2026</strong> community-grant cycle are now open. We fund Sonoma County nonprofits working on housing, affordability, food security, and education — with priority given to rural and unincorporated West County organizations.</p>
+    <div class="opener grants-intro">
+      <div class="eyebrow">Our Grants</div>
+      <h2>Community Grants</h2>
+      <p class="lead">Strategic Solutions, Inc. commits 50% of all funds raised to community grants in housing, affordability, food security and education across Sonoma County, with priority to the rural and unincorporated communities around Sebastopol: Graton, Occidental, Freestone and Camp Meeker.</p>
+      <p class="lead">We look for grants that change an outcome: a home kept open, a bedroom rebuilt, a family housed, rather than the same need returning next quarter. And when another organization already has a strategy that works, we put resources behind it.</p>
+      <p class="lead">Since our first grant cycle in early 2026, SSI has awarded {usd(TOTAL.amount)} through {TOTAL.grants} grants benefiting {TOTAL.organizations} organizations.</p>
+    </div>
+
+    {/* HOLD (package B1 #3): grant-cycle banner kept exactly as currently live
+        until Luke announces the next cycle's dates or takes it down. */}
+    <div class="grants-cycle-banner">
+      <div>
+        <div class="label">Q3 2026 Grant Cycle · Now Open</div>
+        <p>Applications for the <strong>Q3 2026</strong> community-grant cycle are now open.</p>
+      </div>
       <a class="btn btn-primary" href="mailto:Luke@CaStrategicSolutions.org?subject=Q3%202026%20Grant%20Application">Apply for a Grant</a>
     </div>
 
-    <div class="grants-divider">
-      <span>Q2 2026 · Closed Cycle</span>
-    </div>
-
-    <div class="grants-a historical">
-      {Q2_GRANTS.map((g) => (
-        <div class="row">
-          <div class="amount">{g.amount}</div>
-          <div>
-            <h4>{g.name}</h4>
-            <p>{g.desc}</p>
-          </div>
-          <div class="tags">
-            {g.tags.map((t) => <span class="tag">{t}</span>)}
-          </div>
+    <div class="grants-features">
+      <div class="giffen-card">
+        <div class="giffen-body">
+          <p class="giffen-intro"><strong>Featured: Gravenstein Commons, Sebastopol — {usd(gravenstein.total)}.</strong> Gravenstein Commons is 22 apartments of permanent supportive housing at 845 Gravenstein Highway North in Sebastopol, owned by St. Vincent de Paul: 21 homes for residents and one manager's unit. SSI committed {usd(gravenstein.total)} so the building opens secure and ready to live in.</p>
+          <p><strong>Perimeter fence — {usd(fence.amount)}.</strong> SSI funded the perimeter fence project for Gravenstein Commons, giving residents a secure, private home.</p>
+          <p><strong>Apartment furnishings — {usd(furnishings.amount)}.</strong> SSI's grant to The Healthy Room Project furnished all 21 resident apartments, so every resident moves into a home rather than an empty room.</p>
         </div>
-      ))}
-      <div class="foot">
-        <div class="amount">{Q2_TOTALS.assigned}</div>
-        <div class="lbl">Q2 2026 Awarded</div>
-        <div class="meta">Eight organizations · Closed cycle</div>
+        <aside class="giffen-meta">
+          <div class="giffen-stack-item">
+            <div class="micro">SSI commitment</div>
+            <div class="val">{usd(gravenstein.total)}</div>
+          </div>
+          <div class="giffen-stack-item">
+            <div class="micro">Perimeter fence</div>
+            <div class="val">{usd(fence.amount)}</div>
+          </div>
+          <div class="giffen-stack-item">
+            <div class="micro">Apartment furnishings</div>
+            <div class="val">{usd(furnishings.amount)}</div>
+          </div>
+          <div class="giffen-stack-item">
+            <div class="micro">Location</div>
+            <div class="val">Sebastopol</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="giffen-card">
+        <div class="giffen-body">
+          <p><strong>Key partnership: The Healthy Room Project.</strong> In early 2026, SSI provided the seed funding that opened The Healthy Room Project's first Sonoma County branch, which rebuilds bedrooms in a single day for children ages 5 to 16, starting in unincorporated West County. At Gravenstein Commons, Healthy Room brought that same capability to adults moving out of homelessness: it organized purchasing, delivery and setup for all 21 apartments, and secured discounts and donated goods that stretched every grant dollar further. It is the partnership model SSI's grant program is built on: back an organization with a strategy that works, then put that strategy to work again.</p>
+        </div>
+        <aside class="giffen-meta">
+          <div class="giffen-stack-item">
+            <div class="micro">Q1 2026 · Seed funding</div>
+            <div class="val">{usd(healthyRoomSeed.amount)}</div>
+          </div>
+          <div class="giffen-stack-item">
+            <div class="micro">Gravenstein Commons · Furnishings</div>
+            <div class="val">{usd(furnishings.amount)}</div>
+          </div>
+        </aside>
       </div>
     </div>
 
-    <div class="grants-divider">
-      <span>Q1 2026 · Inaugural Cycle</span>
-    </div>
+    {CYCLES.map((c) => (
+      <Fragment>
+        <div class="grants-divider">
+          <span>{c.label}</span>
+        </div>
+        <div class="grants-a">
+          <div class="head">
+            <div>Amount</div>
+            <div>Recipient</div>
+            <div>Where</div>
+          </div>
+          {c.grants.map((g) => (
+            <div class="row">
+              <div class="amount">{usd(g.amount)}</div>
+              <div>
+                <h4>{g.name}</h4>
+                <p>{g.funded}</p>
+              </div>
+              <div class="where">{g.where}</div>
+            </div>
+          ))}
+          <div class="foot">
+            <div class="amount">{usd(c.total)}</div>
+            <div class="lbl">{c.totalsLabel}</div>
+            <div class="meta">{c.grants.length} grants</div>
+          </div>
+        </div>
+      </Fragment>
+    ))}
 
-    <div class="grants-a historical">
-      {Q1_GRANTS.map((g) => (
+    <div class="grants-divider">
+      <span>Totals</span>
+    </div>
+    <div class="grants-a">
+      <div class="head">
+        <div>Amount</div>
+        <div>Cycle</div>
+        <div>Grants</div>
+      </div>
+      {TOTALS_ORDER.map((key) => (
         <div class="row">
-          <div class="amount">{g.amount}</div>
-          <div>
-            <h4>{g.name}</h4>
-            <p>{g.desc}</p>
-          </div>
-          <div class="tags">
-            {g.tags.map((t) => <span class="tag">{t}</span>)}
-          </div>
+          <div class="amount">{usd(byKey[key].total)}</div>
+          <div><h4>{byKey[key].totalsLabel}</h4></div>
+          <div class="where">{byKey[key].grants.length}</div>
         </div>
       ))}
       <div class="foot">
-        <div class="amount">$50,000</div>
-        <div class="lbl">Q1 2026 Awarded</div>
-        <div class="meta">Six organizations · Closed cycle</div>
+        <div class="amount">{usd(TOTAL.amount)}</div>
+        <div class="lbl">Total — {TOTAL.organizations} organizations</div>
+        <div class="meta">{TOTAL.grants} grants</div>
       </div>
     </div>
+    <p class="figures-asof">Figures as of {AS_OF}</p>
   </div>
 </section>
