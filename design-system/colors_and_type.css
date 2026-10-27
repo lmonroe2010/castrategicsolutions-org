@@ -1,0 +1,291 @@
+/* =========================================================================
+   Strategic Solutions, Inc. — Foundations
+   Colors, type, spacing, radii, shadow, motion
+   ========================================================================= */
+
+/* ---------- Webfonts (Google Fonts) -----------------------------------------
+   Display: Source Serif 4  — institutional serif (a-la policy briefs, nonprofit reports)
+   Body:    Source Sans 3   — humanist sans, pairs natively
+   Mono:    JetBrains Mono  — data, code, callouts
+   --------------------------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300..900&family=Source+Sans+3:wght@300..900&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* ===== BRAND COLORS ===================================================== */
+
+  /* Primary — Navy (drawn directly from the SSI logo)                       */
+  --navy-50:  #EEF2F7;
+  --navy-100: #D6DFEC;
+  --navy-200: #A8B8CF;
+  --navy-300: #7991B1;
+  --navy-400: #4D6A92;
+  --navy-500: #2A4E7C;  /* hover / active */
+  --navy-600: #1B3A6B;  /* PRIMARY — logo blue */
+  --navy-700: #142B51;
+  --navy-800: #0E1F3B;
+  --navy-900: #081427;
+
+  /* Accent — Steel blue (mid-tone civic blue — a confident sibling to navy)  */
+  /* The brand is intentionally monochromatic: navy + steel + cream.          */
+  /* Steel-500 anchors CTAs, eyebrows, edge rules, and emphasis spans.       */
+  --steel-50:  #EDF3F9;
+  --steel-100: #CFE0EE;
+  --steel-200: #9EC0DD;
+  --steel-300: #6BA0CB;
+  --steel-400: #4385B8;
+  --steel-500: #2A6FAE;  /* ACCENT — civic blue */
+  --steel-600: #1F578C;
+  --steel-700: #174369;
+  --steel-800: #0F3149;
+  --steel-900: #082136;
+
+  /* Support — Sage (single tone, used only for success state / positive)    */
+  /* No longer the accent — just a quiet positive signal where needed.       */
+  --sage-100: #DDE7D2;
+  --sage-500: #556D42;
+  --sage-600: #445A36;
+
+  /* Support — Earth-clay (rare warm note for art direction; not for UI)     */
+  /* Use sparingly — for photography accents, art-directed elements, NEVER   */
+  /* as a CTA or interactive surface (the brand is intentionally cool now).  */
+  --clay-400:  #B07A55;
+  --clay-500:  #8F6043;
+
+  /* Support — Gold (legacy; retained for grants data accents only)          */
+  --gold-50:  #FBF4E1;
+  --gold-100: #F5E5B6;
+  --gold-200: #EBCF7D;
+  --gold-300: #DAB148;
+  --gold-400: #C49628;
+  --gold-500: #A77C1A;
+
+  /* Neutrals — warm cream → ink (NOT pure white or pure black)              */
+  --cream-50:  #FBF8F2;  /* page bg, light surface */
+  --cream-100: #F4EFE6;  /* SURFACE — primary cream */
+  --cream-200: #EAE2D2;  /* divider, muted surface */
+  --cream-300: #D8CDB7;
+  --stone-400: #A89E8C;
+  --stone-500: #7A7263;
+  --stone-600: #54503F;  /* body text on cream */
+  --ink-700:   #2C2A24;  /* primary text */
+  --ink-800:   #1A1916;
+  --ink-900:   #0E0D0B;
+
+  /* Pure scaffolding — sparingly */
+  --paper:    #FFFFFF;
+  --shadow-ink: rgba(14, 31, 59, 0.12);   /* navy-tinted shadow */
+
+  /* ===== SEMANTIC COLOR TOKENS =========================================== */
+
+  --color-bg:           var(--cream-50);
+  --color-surface:      var(--paper);
+  --color-surface-2:    var(--cream-100);
+  --color-surface-3:    var(--cream-200);
+  --color-surface-ink:  var(--navy-600);   /* dark surfaces (footer / hero) */
+  --color-surface-ink-2:var(--navy-800);
+
+  --color-fg-1:         var(--ink-700);    /* primary text */
+  --color-fg-2:         var(--stone-600);  /* body / secondary */
+  --color-fg-3:         var(--stone-500);  /* tertiary / meta */
+  --color-fg-on-ink:    var(--cream-50);   /* text on navy */
+  --color-fg-on-ink-2:  var(--cream-200);
+
+  --color-border:       var(--cream-200);
+  --color-border-strong:var(--cream-300);
+  --color-divider:      rgba(44, 42, 36, 0.10);
+
+  --color-primary:      var(--navy-600);
+  --color-primary-hover:var(--navy-700);
+  --color-primary-fg:   var(--cream-50);
+
+  --color-accent:       var(--steel-500);
+  --color-accent-hover: var(--steel-600);
+  --color-accent-fg:    var(--cream-50);
+
+  --color-link:         var(--navy-600);
+  --color-link-hover:   var(--steel-500);
+
+  --color-success:      var(--sage-600);
+  --color-warning:      var(--gold-400);
+  --color-danger:       #9A3322;  /* deep brick red — for error states only, NOT the brand accent */
+
+  /* ===== TYPE SYSTEM ===================================================== */
+
+  --font-display: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --font-body:    "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type scale — modular, 1.250 (major third) anchored at 17px body         */
+  --fs-display-1: clamp(3.2rem, 5.2vw + 1rem, 5.5rem);   /* hero */
+  --fs-display-2: clamp(2.6rem, 3.6vw + 1rem, 4.0rem);   /* section opener */
+  --fs-h1:        clamp(2.2rem, 2.4vw + 1rem, 3.0rem);
+  --fs-h2:        clamp(1.7rem, 1.4vw + 1rem, 2.2rem);
+  --fs-h3:        clamp(1.35rem, 0.6vw + 1rem, 1.6rem);
+  --fs-h4:        1.15rem;
+  --fs-lead:      1.25rem;   /* intro paragraphs */
+  --fs-body:      1.0625rem; /* 17px — body */
+  --fs-small:     0.9375rem; /* 15px */
+  --fs-meta:      0.8125rem; /* 13px — labels / eyebrows */
+  --fs-data:      clamp(2.4rem, 2.5vw + 1rem, 3.6rem);   /* big-number callouts */
+
+  /* Weights */
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-black:    800;
+
+  /* Line-heights & tracking */
+  --lh-tight:   1.08;
+  --lh-snug:    1.22;
+  --lh-normal:  1.55;
+  --lh-loose:   1.7;
+
+  --tracking-eyebrow: 0.14em;   /* uppercase labels */
+  --tracking-tight:   -0.018em; /* display */
+  --tracking-snug:    -0.005em;
+  --tracking-normal:   0;
+
+  /* ===== SPACING — 4pt baseline ========================================== */
+  --s-0:   0;
+  --s-1:   0.25rem;   /* 4  */
+  --s-2:   0.5rem;    /* 8  */
+  --s-3:   0.75rem;   /* 12 */
+  --s-4:   1rem;      /* 16 */
+  --s-5:   1.5rem;    /* 24 */
+  --s-6:   2rem;      /* 32 */
+  --s-7:   2.5rem;    /* 40 */
+  --s-8:   3rem;      /* 48 */
+  --s-9:   4rem;      /* 64 */
+  --s-10:  5rem;      /* 80 */
+  --s-11:  6rem;      /* 96 */
+  --s-12:  8rem;      /* 128 — section gutters */
+
+  /* ===== RADII =========================================================== */
+  --r-0:   0;
+  --r-xs:  2px;
+  --r-sm:  4px;
+  --r-md:  6px;     /* default — buttons, inputs */
+  --r-lg:  10px;    /* cards */
+  --r-xl:  16px;    /* large cards / image frames */
+  --r-pill: 999px;
+
+  /* ===== ELEVATION ======================================================= */
+  --shadow-xs: 0 1px 2px rgba(14, 31, 59, 0.06);
+  --shadow-sm: 0 2px 6px -1px rgba(14, 31, 59, 0.08), 0 1px 2px rgba(14, 31, 59, 0.05);
+  --shadow-md: 0 8px 22px -8px rgba(14, 31, 59, 0.16), 0 2px 6px -2px rgba(14, 31, 59, 0.08);
+  --shadow-lg: 0 22px 50px -18px rgba(14, 31, 59, 0.24), 0 6px 14px -6px rgba(14, 31, 59, 0.10);
+  --shadow-inset: inset 0 0 0 1px rgba(14, 31, 59, 0.08);
+
+  /* ===== MOTION ========================================================== */
+  --ease-out:     cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-emph:    cubic-bezier(0.34, 1.42, 0.64, 1);
+
+  --dur-fast:    150ms;
+  --dur-base:    220ms;
+  --dur-slow:    420ms;
+
+  /* ===== LAYOUT ========================================================== */
+  --container-narrow: 760px;
+  --container-base:   1100px;
+  --container-wide:   1280px;
+
+  --hairline: 1px solid var(--color-border);
+}
+
+/* ============================================================================
+   SEMANTIC ELEMENT DEFAULTS
+   Apply by importing this file. Element-level resets so unstyled HTML
+   from inside the design system already looks branded.
+   ============================================================================ */
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+/* Account for sticky header height when jumping to anchored sections */
+:target,
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-fg-1);
+  margin: 0 0 var(--s-4);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-snug); }
+h3 { font-size: var(--fs-h3); letter-spacing: var(--tracking-snug); }
+h4 { font-size: var(--fs-h4); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-snug); }
+
+.display-1 { font-family: var(--font-display); font-size: var(--fs-display-1); font-weight: var(--fw-semibold); line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); }
+.display-2 { font-family: var(--font-display); font-size: var(--fs-display-2); font-weight: var(--fw-semibold); line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); }
+
+p { margin: 0 0 var(--s-4); color: var(--color-fg-2); text-wrap: pretty; }
+.lead { font-size: var(--fs-lead); line-height: var(--lh-loose); color: var(--color-fg-1); }
+small, .small { font-size: var(--fs-small); color: var(--color-fg-2); }
+.meta, .eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-meta);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.data-figure {
+  font-family: var(--font-display);
+  font-size: var(--fs-data);
+  font-weight: var(--fw-regular);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover { color: var(--color-link-hover); }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--color-divider);
+  margin: var(--s-8) 0;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+::selection {
+  background: var(--steel-100);
+  color: var(--ink-800);
+}

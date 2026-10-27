@@ -1,0 +1,45 @@
+# Saves a dated copy of every production release.
+# On each push to main: builds the site, then creates the tag
+# live-YYYY-MM-DD-HHMM (Pacific time) and a GitHub Release with the built site
+# attached as site-YYYY-MM-DD-HHMM.zip. Netlify publishes independently; this
+# job only records what was published.
+name: Snapshot live release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Tag and release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          STAMP=$(TZ=America/Los_Angeles date +%Y-%m-%d-%H%M)
+          TAG="live-$STAMP"
+          # Two merges in the same minute: keep both by adding seconds.
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null; then
+            STAMP="$STAMP$(TZ=America/Los_Angeles date +%S)"
+            TAG="live-$STAMP"
+          fi
+          (cd dist && zip -qr "../site-$STAMP.zip" .)
+          gh release create "$TAG" "site-$STAMP.zip" \
+            --target "$GITHUB_SHA" \
+            --title "Live $STAMP (Pacific)" \
+            --notes "Snapshot of castrategicsolutions.org as published from ${GITHUB_SHA::7}."

@@ -17,8 +17,13 @@ pnpm-debug.log*
 .env
 .env.production
 
-# macOS-specific files
+# macOS / Windows / Office lock files
 .DS_Store
+Thumbs.db
+~$*
+
+# local Netlify CLI state
+.netlify/
 
 # jetbrains setting folder
 .idea/
