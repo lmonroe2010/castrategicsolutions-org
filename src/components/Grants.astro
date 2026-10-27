@@ -7,6 +7,7 @@ const byKey = Object.fromEntries(CYCLES.map((c) => [c.key, c]));
 const gravenstein = byKey['gravenstein'];
 const [fence, furnishings] = gravenstein.grants;
 const healthyRoomSeed = byKey['q1-2026'].grants.find((g) => g.org === 'healthy-room');
+const APPLY_EMAIL = 'Luke@CaStrategicSolutions.org';
 ---
 <section class="section paper" id="grants">
   <div class="container">
@@ -18,14 +19,18 @@ const healthyRoomSeed = byKey['q1-2026'].grants.find((g) => g.org === 'healthy-r
       <p class="lead">Since our first grant cycle in early 2026, SSI has awarded {usd(TOTAL.amount)} through {TOTAL.grants} grants benefiting {TOTAL.organizations} organizations.</p>
     </div>
 
-    {/* HOLD (package B1 #3): grant-cycle banner kept exactly as currently live
-        until Luke announces the next cycle's dates or takes it down. */}
-    <div class="grants-cycle-banner">
+    {/* HOLD (package B1 #3): the cycle label and sentence stay as currently live
+        until Luke announces the next cycle's dates or takes the banner down.
+        Every "Apply for a Grant" link on the site jumps here (#apply). The
+        contact details are shown as text and the button copies the address,
+        because a bare mailto: does nothing on computers without a mail app. */}
+    <div class="grants-cycle-banner" id="apply">
       <div>
         <div class="label">Q3 2026 Grant Cycle · Now Open</div>
         <p>Applications for the <strong>Q3 2026</strong> community-grant cycle are now open.</p>
+        <p class="how">To apply, email us at <a href={`mailto:${APPLY_EMAIL}?subject=Grant%20Application`}>{APPLY_EMAIL}</a> or call <a href="tel:+17073313121">707-331-3121</a>.</p>
       </div>
-      <a class="btn btn-primary" href="mailto:Luke@CaStrategicSolutions.org?subject=Q3%202026%20Grant%20Application">Apply for a Grant</a>
+      <button class="btn btn-primary" type="button" data-copy={APPLY_EMAIL}>Copy email address</button>
     </div>
 
     <div class="grants-features">
@@ -127,3 +132,21 @@ const healthyRoomSeed = byKey['q1-2026'].grants.find((g) => g.org === 'healthy-r
     <p class="figures-asof">Figures as of {AS_OF}</p>
   </div>
 </section>
+
+<script>
+  // Copy the application email; if the clipboard is unavailable, open mail instead.
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    const label = btn.textContent;
+    btn.addEventListener('click', async () => {
+      const email = btn.dataset.copy ?? '';
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        window.location.href = `mailto:${email}?subject=Grant%20Application`;
+        return;
+      }
+      btn.textContent = 'Email address copied';
+      setTimeout(() => { btn.textContent = label; }, 2500);
+    });
+  });
+</script>
